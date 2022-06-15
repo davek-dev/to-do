@@ -14,6 +14,9 @@ public class ToDoItemService : IToDoItemService
 
     public async Task CreateItemAsync(ToDoItemModel model)
     {
+        model.Id = Guid.NewGuid().ToString();
+        model.DateCreated = DateTime.Now;
+        model.DateCompleted = null;
         await _toDoItemDataAccessService.CreateItemAsync(model);
     }
 
